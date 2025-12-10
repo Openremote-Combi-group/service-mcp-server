@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastmcp import FastMCP
 from openremote_client.schemas import ExternalServiceSchema
 
-from shared.openremote_service import init_openremote_service
+from services.openremote_service import init_openremote_service
 from .config import config
 from .health import init_health
 from .services import init_services

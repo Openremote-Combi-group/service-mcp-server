@@ -7,8 +7,8 @@ from httpx import HTTPStatusError
 from openremote_client.schemas import AssetQuerySchema, RealmPredicateSchema, AssetObjectSchema
 from pydantic import Field, BaseModel
 
-from shared.openremote_service import get_openremote_service
-from ...app.utils import asset_attribute_model_factory
+from services.openremote_service import get_openremote_service
+from app.utils import asset_attribute_model_factory
 
 logger = logging.getLogger("uvicorn")
 

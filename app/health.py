@@ -2,7 +2,7 @@ from fastmcp import FastMCP
 from httpx import HTTPStatusError
 from starlette.responses import JSONResponse
 
-from shared.openremote_service import get_openremote_service
+from services.openremote_service import get_openremote_service
 from .config import config
 
 mcp_health = FastMCP("Health Check")
