@@ -23,9 +23,7 @@ class Config(BaseSettings):
     openremote_service_id: str = 'MCP-Server'
     openremote_heartbeat_interval: int = 30
 
-    base_url: str = '/'
-
-    cors_allowed_domains: set[str] = set()
+    base_url: str = 'http://localhost:8420/'
 
 
 config = Config()

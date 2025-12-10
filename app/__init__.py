@@ -13,8 +13,7 @@ mcp = FastMCP("OpenRemote Tools")
 
 @mcp.custom_route("/", methods=['GET'])
 async def homepage(request):
-
-    return Jinja2Templates(directory="templates").TemplateResponse("index.html", {"request": request, "tools": await mcp.get_tools()})
+    return Jinja2Templates(directory="templates").TemplateResponse("index.html", {"request": request, "tools": await mcp.get_tools(), "base_url": config.base_url})
 
 init_health(mcp)
 
@@ -39,7 +38,7 @@ def extend_lifespan(original_lifespan):
                 service_schema=ExternalServiceSchema(
                     serviceId=config.openremote_service_id,
                     label="MCP Server",
-                    homepageUrl="http://localhost:8420",
+                    homepageUrl=config.base_url,
                     status="AVAILABLE",
                 )
             )

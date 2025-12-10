@@ -1,5 +1,5 @@
 # OpenRemote MCP Server
-MCP Services for OpenRemote.
+MCP Server for your OpenRemote instance.
 
 
 
