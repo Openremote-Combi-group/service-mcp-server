@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastmcp import FastMCP
 from openremote_client.schemas import ExternalServiceSchema
+from starlette.templating import Jinja2Templates
 
 from services.openremote_service import init_openremote_service
 from .config import config
@@ -10,6 +11,10 @@ from .services import init_services
 
 mcp = FastMCP("OpenRemote Tools")
 
+@mcp.custom_route("/", methods=['GET'])
+async def homepage(request):
+
+    return Jinja2Templates(directory="templates").TemplateResponse("index.html", {"request": request, "tools": await mcp.get_tools()})
 
 init_health(mcp)
 
@@ -46,4 +51,3 @@ def extend_lifespan(original_lifespan):
     return combined_lifespan
 
 app.router.lifespan_context = extend_lifespan(app.router.lifespan_context)
-

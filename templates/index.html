@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MCP-Server</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .code {
+      background-color: #afafaf;
+      color: #2c2c2c;
+      padding: 1rem;
+      white-space: normal;
+    }
+
+    .chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+
+    .chip {
+      border-radius: 2rem;
+      padding: .3rem .8rem;
+        background-color: #e3e3e3;
+        cursor: pointer;
+    }
+
+    .chip:hover {
+        background-color: #c6c6c6;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>MCP-Server</h1>
+  <h2>Connect</h2>
+  <p>Connect to the MCP server using the configuration below:</p>
+  <h2>Available Tools</h2>
+    {% for tool_name, tool in tools.items() %}
+      <details>
+        <summary>
+          <b>{{ tool_name }}</b>
+        </summary>
+        {{ tool.description }}
+        {{ tool.parameters }}
+      </details>
+    {% endfor %}
+</div>
+</body>
+</html>
