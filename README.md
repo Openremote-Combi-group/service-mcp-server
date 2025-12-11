@@ -90,5 +90,5 @@ This guide assumes you already have an OpenRemote instance running.
 
     Build the docker image
     ```shell
-    docker build . --tag=openremote/mcp-client:latest 
+    docker build . --tag=openremote/mcp-server:latest 
     ```
