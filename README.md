@@ -1,4 +1,4 @@
-# OpenRemote MCP Server
+# OpenRemote MCP Server Service
 MCP Server for your OpenRemote instance.
 
 
@@ -29,10 +29,12 @@ This guide assumes you already have an OpenRemote instance running.
         ports:
           - "8420:8420"
         environment:
-          OPENREMOTE_CLIENT_ID=<OPENREMOTE_CLIENT_ID>
-          OPENREMOTE_CLIENT_SECRET=<OPENREMOTE_CLIENT_SECRET>
-          OPENREMOTE_URL=<OPENREMOTE_URL>
-          OPENREMOTE_VERIFY_SSL=1
+          APP_HOMEPAGE_URL: https://<SERVICE_URL>:8420 # Change this to the URL this service is available on
+          
+          OPENREMOTE_CLIENT_ID: <OPENREMOTE_CLIENT_ID>
+          OPENREMOTE_CLIENT_SECRET: <OPENREMOTE_CLIENT_SECRET>
+          OPENREMOTE_URL: <OPENREMOTE_URL>
+          OPENREMOTE_VERIFY_SSL: 1
     ```
 
 4. **Run the service**
@@ -46,6 +48,10 @@ This guide assumes you already have an OpenRemote instance running.
 
 ## Development guide
 This guide assumes you already have an OpenRemote instance running.
+
+### Prerequisites:
+- [Python](https://www.python.org/downloads/) & [UV](https://docs.astral.sh/uv/#installation) installed
+- Running an instance of [OpenRemote](https://docs.openremote.io/docs/quick-start)
 
 1. **Create service user**
 
@@ -67,10 +73,22 @@ This guide assumes you already have an OpenRemote instance running.
     OPENREMOTE_CLIENT_ID=<OPENREMOTE_CLIENT_ID>
     OPENREMOTE_CLIENT_SECRET=<OPENREMOTE_CLIENT_SECRET>
     OPENREMOTE_URL=<OPENREMOTE_URL>
-    OPENREMOTE_VERIFY_SSL=1
+    OPENREMOTE_VERIFY_SSL=0
     ```
 
-6. **Run service**
+4. **Run service**
     ```shell
-    uv run uvicorn app:app
+    uv run uvicorn app:app --reload --port=8420
+    ```
+
+## Production guide
+
+### Prerequisites:
+- [Docker](https://docs.docker.com/engine/install/) installed
+
+1. **Build docker image**
+
+    Build the docker image
+    ```shell
+    docker build . --tag=openremote/mcp-client:latest 
     ```

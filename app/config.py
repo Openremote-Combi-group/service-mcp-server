@@ -15,6 +15,7 @@ class Config(BaseSettings):
     )
 
     app_debug: bool = False
+    app_homepage_url: str = 'http://localhost:8420/'
 
     openremote_url: HttpUrl
     openremote_client_id: str
@@ -22,8 +23,6 @@ class Config(BaseSettings):
     openremote_verify_ssl: bool = True
     openremote_service_id: str = 'MCP-Server'
     openremote_heartbeat_interval: int = 30
-
-    base_url: str = 'http://localhost:8420/'
 
 
 config = Config()
