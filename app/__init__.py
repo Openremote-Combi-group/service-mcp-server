@@ -8,12 +8,21 @@ from services.openremote_service import init_openremote_service
 from .config import config
 from .health import init_health
 from .services import init_services
+import json
 
 mcp = FastMCP("OpenRemote Tools")
 
 @mcp.custom_route("/", methods=['GET'])
 async def homepage(request):
-    return Jinja2Templates(directory="templates").TemplateResponse("index.html", {"request": request, "tools": await mcp.get_tools(), "app_homepage_url": config.app_homepage_url})
+    return Jinja2Templates(directory="templates").TemplateResponse(
+        "index.html",
+        {
+            "request": request,
+            "tools": await mcp.get_tools(),
+            "app_homepage_url": config.app_homepage_url,
+            "json": json
+        }
+    )
 
 init_health(mcp)
 

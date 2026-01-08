@@ -40,7 +40,7 @@
           <p>{{ tool.description }}</p>
           <br />
           <h5>Parameters</h5>
-          <p>{{ tool.parameters }}</p>
+          <pre><code>{{ json.dumps(tool.parameters, indent=2) }}</code></pre>
         </details>
       {% endfor %}
   </div>
